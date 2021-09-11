@@ -1,0 +1,5 @@
+﻿*.*
+!src/imgui_animated.*
+!.gitignore
+!.gitattributes
+!*.md
