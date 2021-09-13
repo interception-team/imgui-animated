@@ -1,5 +1,3 @@
-#include <time.h>
-
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include "imgui.h"
 #include "imgui_internal.h"
@@ -95,7 +93,7 @@ bool ImGui::ButtonScrollableEx( const char* label, const ImVec2& size_arg, ImGui
 	RenderNavHighlight( bb, id );
 	RenderFrame( bb.Min, bb.Max, col, true, style.FrameRounding );
 
-	const float offset = size.x >= label_size.x + style.FramePadding.x * 2.0f ? size.x + style.FramePadding.x : static_cast< int >( clock( ) / 15 / ( CLOCKS_PER_SEC / 1000 ) ) % static_cast< int >( label_size.x + size.x + style.FramePadding.x * 2.f + 4 );
+	const float offset = size.x >= label_size.x + style.FramePadding.x * 2.0f ? size.x + style.FramePadding.x : static_cast< int >( g.Time * 60.f ) % static_cast< int >( label_size.x + size.x + style.FramePadding.x * 2.f + 4 );
 	const ImRect text = ImRect( ImVec2( bb.Min.x + size.x - offset + style.FramePadding.x * 2.f, bb.Min.y + style.FramePadding.y ), bb.Max - style.FramePadding );
 
 	RenderTextClipped( text.Min, text.Max, label, NULL, &label_size, size.x >= label_size.x + style.FramePadding.x * 2.0f ? g.Style.ButtonTextAlign : ImVec2( 0, 0 ), &bb );
